@@ -16,7 +16,7 @@ public class InsertProfessorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_professor);
 
-        Toast.makeText(InsertProfessorActivity.this, "asadhj", Toast.LENGTH_LONG);
+
         AppCompatButton ButtonCadastrar = findViewById(R.id.button_cadastrar);
 
 
@@ -33,7 +33,8 @@ public class InsertProfessorActivity extends AppCompatActivity {
                 String resultado;
 
                 resultado = crud.insereRegistroProfessor(nome, formacao);
-                Toast.makeText(InsertProfessorActivity.this, resultado, Toast.LENGTH_LONG);
+                Toast.makeText(InsertProfessorActivity.this, resultado, Toast.LENGTH_LONG).show();
+                finish();
 
             }
         });
