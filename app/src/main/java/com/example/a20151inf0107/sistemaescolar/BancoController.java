@@ -2,6 +2,7 @@ package com.example.a20151inf0107.sistemaescolar;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -37,6 +38,25 @@ public class BancoController {
 
     }
 
+
+    public Cursor carregaRegistrosProfessor(){
+        Cursor cursor;
+        String[] campos = {banco.ID, banco.NOME};
+        db = banco.getReadableDatabase();
+        cursor = db.query(banco.TABELA_PROFESSORES,
+                campos,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        return cursor;
+    }
 
 
 }

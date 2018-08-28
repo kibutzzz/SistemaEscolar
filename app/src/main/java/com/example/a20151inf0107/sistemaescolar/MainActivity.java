@@ -1,11 +1,14 @@
 package com.example.a20151inf0107.sistemaescolar;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +16,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ListView listView = findViewById(R.id.listView);
+
+        BancoController crud = new BancoController(getBaseContext());
+        Cursor cursor = crud.carregaRegistrosProfessor();
+
+        String[] nomeCampos = {CriaBanco.ID, CriaBanco.NOME};
+        int[] idViews = {R.id.view_id, R.id.view_nome};
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(getBaseContext(),
+                R.layout.list_item_materia, cursor, nomeCampos, idViews, 0);
+
+        listView.setAdapter(adapter);
+
     }
 
 
