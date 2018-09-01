@@ -16,9 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InsertProfessorActivity"
+        <activity
+            android:name=".InsertProfessorActivity"
             android:label="Cadastrar Professor"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".InsertMateriaActivity"></activity>
     </application>
 
 </manifest>
