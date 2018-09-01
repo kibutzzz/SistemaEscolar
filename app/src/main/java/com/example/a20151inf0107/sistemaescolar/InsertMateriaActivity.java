@@ -29,17 +29,25 @@ public class InsertMateriaActivity extends AppCompatActivity {
         buttonCadastrar = findViewById(R.id.button_cadastrar);
 
 
-
+        setSpinnerValues();
 
         buttonCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v(TAG, spinnerProfessor.getSelectedItemId() + "");
+                BancoController crud = new BancoController(getBaseContext());
+
+                int id = (int) spinnerProfessor.getSelectedItemId();
+                String nome = editTextMateria.getText().toString();
+
+                String message = crud.insereRegistroMateria(id, nome);
+
+                Log.v(TAG, message);
+                finish();
             }
         });
     }
 
-    private void setSpinnerValues(){
+    private void setSpinnerValues() {
         BancoController crud = new BancoController(getBaseContext());
         Cursor cursor = crud.carregaRegistrosProfessor();
 
