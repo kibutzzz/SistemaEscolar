@@ -44,14 +44,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.cadastrar:
-                Intent intentInsert = new Intent(getBaseContext(), InsertProfessorActivity.class);
-                startActivity(intentInsert);
+            case R.id.cadastrar_professor:
+                Intent intentInsertProfessor = new Intent(getBaseContext(), InsertProfessorActivity.class);
+                startActivity(intentInsertProfessor);
                 break;
 //            case R.id.alterar:
 //                Intent intentAlter = new Intent(getBaseContext(), AlterDataActivity.class);
 //                startActivity(intentAlter);
 //                break;
+            case R.id.cadastrar_materia:
+                Intent intentInsertMateria = new Intent(getBaseContext(), InsertMateriaActivity.class);
+                startActivity(intentInsertMateria);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

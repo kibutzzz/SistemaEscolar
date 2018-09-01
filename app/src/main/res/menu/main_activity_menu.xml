@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/cadastrar"
+        android:id="@+id/cadastrar_professor"
         android:title="cadastrar professor" />
+    <item android:id="@+id/cadastrar_materia"
+        android:title="cadastrar materia"/>
     <item
-        android:id="@+id/alterar"
-        android:title="alterar" />
+        android:id="@+id/gerenciar"
+        android:title="gerenciar cadastros" />
 </menu>
