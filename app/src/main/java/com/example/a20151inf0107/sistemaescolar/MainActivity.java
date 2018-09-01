@@ -17,6 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         ListView listView = findViewById(R.id.listView);
 
         BancoController crud = new BancoController(getBaseContext());
@@ -29,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 R.layout.list_item_materia, cursor, nomeCampos, idViews, 0);
 
         listView.setAdapter(adapter);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
