@@ -37,6 +37,25 @@ public class BancoController {
             return "Registro Inserido com sucesso";
 
     }
+    public String insereRegistroMateria(int idProfessor, String materia) {
+        ContentValues valores;
+        long resultado;
+
+        db = banco.getWritableDatabase();
+        valores = new ContentValues();
+        valores.put(CriaBanco.NOME, materia);
+        valores.put(CriaBanco.FK_ID_PROFESSOR, idProfessor);
+
+        resultado = db.insert(CriaBanco.TABELA_MATERIAS, null, valores);
+        db.close();
+
+        if (resultado == -1)
+            return "Erro ao inserir registro";
+        else
+            return "Registro Inserido com sucesso";
+
+    }
+
 
 
     public Cursor carregaRegistrosProfessor(){
@@ -51,9 +70,11 @@ public class BancoController {
                 null,
                 null);
 
+        
         if (cursor != null){
             cursor.moveToFirst();
         }
+
 
         return cursor;
     }
