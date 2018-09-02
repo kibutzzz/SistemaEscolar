@@ -1,9 +1,11 @@
-package com.example.a20151inf0107.sistemaescolar;
+package com.example.a20151inf0107.sistemaescolar.controllers;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.a20151inf0107.sistemaescolar.models.CriaBanco;
 
 /**
  * Created by 20151inf0107 on 27/08/2018.
@@ -25,7 +27,7 @@ public class BancoController {
 
         db = banco.getWritableDatabase();
         valores = new ContentValues();
-        valores.put(CriaBanco.NOME, nome);
+        valores.put(CriaBanco.NOME_PROFESSOR, nome);
         valores.put(CriaBanco.FORMACAO, formacao);
 
         resultado = db.insert(CriaBanco.TABELA_PROFESSORES, null, valores);
@@ -37,13 +39,14 @@ public class BancoController {
             return "Registro Inserido com sucesso";
 
     }
+
     public String insereRegistroMateria(int idProfessor, String materia) {
         ContentValues valores;
         long resultado;
 
         db = banco.getWritableDatabase();
         valores = new ContentValues();
-        valores.put(CriaBanco.NOME, materia);
+        valores.put(CriaBanco.NOME_MATERIA, materia);
         valores.put(CriaBanco.FK_ID_PROFESSOR, idProfessor);
 
         resultado = db.insert(CriaBanco.TABELA_MATERIAS, null, valores);
@@ -57,10 +60,24 @@ public class BancoController {
     }
 
 
-
-    public Cursor carregaRegistrosProfessor(){
+    public Cursor carregaMateria() {
         Cursor cursor;
-        String[] campos = {banco.ID, banco.NOME};
+        db = banco.getReadableDatabase();
+
+
+        String SQL_QUERY = "SELECT * FROM " + banco.TABELA_MATERIAS + " m INNER JOIN "
+                + banco.TABELA_PROFESSORES + " p" +
+                " ON m." + banco.FK_ID_PROFESSOR + " = p." + banco.ID;
+
+        cursor = db.rawQuery(SQL_QUERY, null);
+
+        return cursor;
+    }
+
+
+    public Cursor carregaRegistrosProfessor() {
+        Cursor cursor;
+        String[] campos = {banco.ID, banco.NOME_PROFESSOR};
         db = banco.getReadableDatabase();
         cursor = db.query(banco.TABELA_PROFESSORES,
                 campos,
@@ -70,8 +87,8 @@ public class BancoController {
                 null,
                 null);
 
-        
-        if (cursor != null){
+
+        if (cursor != null) {
             cursor.moveToFirst();
         }
 
