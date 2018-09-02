@@ -74,6 +74,22 @@ public class BancoController {
         return cursor;
     }
 
+    public Cursor carregaMateriaById(String id) {
+        Cursor cursor;
+        db = banco.getReadableDatabase();
+
+
+        String SQL_QUERY = "SELECT * FROM " + banco.TABELA_MATERIAS + " m INNER JOIN "
+                + banco.TABELA_PROFESSORES + " p" +
+                " ON m." + banco.FK_ID_PROFESSOR + " = p." + banco.ID +
+                " WHERE m."+banco.ID+" = "+ id;
+
+        cursor = db.rawQuery(SQL_QUERY, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
 
     public Cursor carregaRegistrosProfessor() {
         Cursor cursor;
@@ -97,4 +113,28 @@ public class BancoController {
     }
 
 
+    public void AlterarMateria(String codigo, String nome) {
+        ContentValues valores;
+        String where;
+
+        db = banco.getWritableDatabase();
+
+        where = CriaBanco.ID + "=" + codigo;
+
+        valores = new ContentValues();
+        valores.put(CriaBanco.NOME_MATERIA, nome);
+
+
+        db.update(CriaBanco.TABELA_MATERIAS,valores,where,null);
+        db.close();
+
+    }
+
+    public void excluirMateria(String codigo) {
+        String where = CriaBanco.ID + "=" + codigo;
+        db = banco.getReadableDatabase();
+        db.delete(CriaBanco.TABELA_MATERIAS,where,null);
+        db.close();
+
+    }
 }
