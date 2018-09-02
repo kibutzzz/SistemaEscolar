@@ -20,7 +20,8 @@
             android:name=".views.InsertProfessorActivity"
             android:label="Cadastrar Professor"
             android:parentActivityName=".views.MainActivity" />
-        <activity android:name=".views.InsertMateriaActivity"></activity>
+        <activity android:name=".views.InsertMateriaActivity" />
+        <activity android:name=".views.ManageActivity"></activity>
     </application>
 
 </manifest>
