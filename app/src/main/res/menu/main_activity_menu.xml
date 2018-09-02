@@ -6,7 +6,5 @@
         android:title="cadastrar professor" />
     <item android:id="@+id/cadastrar_materia"
         android:title="cadastrar materia"/>
-    <item
-        android:id="@+id/gerenciar"
-        android:title="gerenciar cadastros" />
+
 </menu>
