@@ -1,4 +1,4 @@
-package com.example.a20151inf0107.sistemaescolar;
+package com.example.a20151inf0107.sistemaescolar.views;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +9,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+
+import com.example.a20151inf0107.sistemaescolar.R;
+import com.example.a20151inf0107.sistemaescolar.controllers.BancoController;
+import com.example.a20151inf0107.sistemaescolar.models.CriaBanco;
+import com.example.a20151inf0107.sistemaescolar.views.InsertMateriaActivity;
+import com.example.a20151inf0107.sistemaescolar.views.InsertProfessorActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listView);
 
         BancoController crud = new BancoController(getBaseContext());
-        Cursor cursor = crud.carregaRegistrosProfessor();
+        Cursor cursor = crud.carregaMateria();
 
-        String[] nomeCampos = {CriaBanco.ID, CriaBanco.NOME};
-        int[] idViews = {R.id.view_id, R.id.view_nome};
+        String[] nomeCampos = new String[]{CriaBanco.NOME_MATERIA, CriaBanco.NOME_PROFESSOR};
+        int[] idViews = {R.id.materia, R.id.professor};
 
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(getBaseContext(),
                 R.layout.list_item_materia, cursor, nomeCampos, idViews, 0);
