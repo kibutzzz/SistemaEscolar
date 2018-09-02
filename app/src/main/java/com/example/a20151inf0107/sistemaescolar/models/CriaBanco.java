@@ -1,4 +1,4 @@
-package com.example.a20151inf0107.sistemaescolar;
+package com.example.a20151inf0107.sistemaescolar.models;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,14 +10,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class CriaBanco extends SQLiteOpenHelper {
 
-    static final String TABELA_MATERIAS = "materias";
-    static final String TABELA_PROFESSORES = "professores";
-    static final String ID = "_id";
-    static final String NOME = "nome";
-    static final String FK_ID_PROFESSOR = "id_professor";
-    static final String FORMACAO = "formacao";
+    public static final String TABELA_MATERIAS = "materias";
+    public static final String TABELA_PROFESSORES = "professores";
+    public static final String ID = "_id";
+    public static final String NOME_PROFESSOR = "nome_professor";
+    public static final String NOME_MATERIA = "nome_materia";
+    public static final String FK_ID_PROFESSOR = "id_professor";
+    public static final String FORMACAO = "formacao";
     private static final String NOME_BANCO = "bancoSistemaEscolar.db";
-    private static final int VERSAO = 2;
+    private static final int VERSAO = 3;
 
     public CriaBanco(Context context) {
         super(context, NOME_BANCO, null, VERSAO);
@@ -27,7 +28,7 @@ public class CriaBanco extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABELA_PROFESSORES + "( "
                 + ID + " integer primary key autoincrement, "
-                + NOME + " text, "
+                + NOME_PROFESSOR + " text, "
                 + FORMACAO + " text"
                 + "); ";
 
@@ -35,7 +36,7 @@ public class CriaBanco extends SQLiteOpenHelper {
         db.execSQL(sql);
         sql = "CREATE TABLE " + TABELA_MATERIAS + "( "
                 + ID + " integer primary key autoincrement, "
-                + NOME + " text, "
+                + NOME_MATERIA + " text, "
                 + FK_ID_PROFESSOR + " integer, "
                 + "FOREIGN KEY( " + FK_ID_PROFESSOR + " ) REFERENCES " + TABELA_PROFESSORES + "(" + ID + ")"
                 + " )";
