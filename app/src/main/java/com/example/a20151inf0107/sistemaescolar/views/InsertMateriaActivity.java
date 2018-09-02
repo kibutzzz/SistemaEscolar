@@ -1,4 +1,4 @@
-package com.example.a20151inf0107.sistemaescolar;
+package com.example.a20151inf0107.sistemaescolar.views;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.util.Log;
 import android.view.View;
 import android.widget.SimpleCursorAdapter;
+
+import com.example.a20151inf0107.sistemaescolar.R;
+import com.example.a20151inf0107.sistemaescolar.controllers.BancoController;
+import com.example.a20151inf0107.sistemaescolar.models.CriaBanco;
 
 public class InsertMateriaActivity extends AppCompatActivity {
 
@@ -52,7 +56,7 @@ public class InsertMateriaActivity extends AppCompatActivity {
         Cursor cursor = crud.carregaRegistrosProfessor();
 
         String[] columns = {
-                CriaBanco.NOME,
+                CriaBanco.NOME_PROFESSOR,
                 CriaBanco.ID
         };
 
