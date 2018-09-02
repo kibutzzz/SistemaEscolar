@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/view_id"
+        android:id="@+id/materia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18dp"
@@ -13,7 +13,7 @@
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/view_nome"
+        android:id="@+id/professor"
         android:text="professor"/>
 
 
